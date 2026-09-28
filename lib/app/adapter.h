@@ -1,0 +1,34 @@
+#pragma once
+
+#ifndef IRAM_LOCATED
+#define IRAM_LOCATED
+#endif
+
+enum class pin_mode {
+  NONE,
+  OUTPUT_MODE,
+  INPUT_PULLUP_MODE,
+  INPUT_PULLDOWN_MODE,
+  INPUT_MODE,
+};
+enum class voltage_state {
+  RISING_STATE,
+  FALLING_STATE,
+  CHANGE_STATE,
+  LOW_STATE,
+  HIGH_STATE
+};
+enum class pin_state { LOW_STATE, HIGH_STATE };
+
+void initialize_logger();
+void log_message(const char *message);
+
+void setup_pin(int pin_index, pin_mode pin_mode);
+void attach_interrupt(int pin, void (*isr)(), voltage_state state);
+void setup_analog_resolution(int resolution);
+
+void change_pin_state(int pin, pin_state state);
+pin_state read_pin_state(int pin);
+int read_analog_pin(int pin);
+unsigned long get_millis_from_start();
+unsigned long get_micros_from_start();
