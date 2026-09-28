@@ -6,6 +6,6 @@
 #define MICROSECONDS_IN_SECOND 1000000
 #define PWM_PERIOD (MICROSECONDS_IN_SECOND / MAX_FREQUENCY)
 
-int get_high_period(int potenciometro_value);
+int get_current_period(int potenciometro_value, bool is_motor_running);
 
 #endif // APPLICATION_MODEL_H
